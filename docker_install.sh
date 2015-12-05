@@ -1,17 +1,13 @@
 #!/bin/bash
 
-read -p "Do you need uninstall docker, [yes/no]" Choose
-if [[ $Choose == 'yes' ]]; then
+read -p "Do you need uninstall docker, [yes/no]" yn
+if [ "$yn" == "yes" -o "$yn" == "y" ]; then
 	echo "begin uninstall docker..."
 	sudo apt-get autoremove --purge docker-engine
-	echo "Are you want to delete all images, containers, and volumes. [yes/no]" is_delete
-	if [[ $is_delete == 'yes' ]]; then
+	echo "Are you want to delete all images, containers, and volumes. [yes/no]" yn 
+	if [ "$yn" == "yes" -o "$yn" == "y" ]; then
 		sudo rm -rf /var/lib/docker
-    else
-        echo ""
     fi
-else
-    echo ""
 fi
 
 # Add the new gpg key
@@ -30,7 +26,7 @@ read -p "Choose the version you want to install: " docker_version
 
 sudo apt-get install -y docker-engine=$docker_version
 
-if [[ $? == '0' ]]; then
+if [[ $? -eq 0 ]]; then
 	echo "install docker $docker_version success"
 else
 	echo "install docker $docker_version failed"
