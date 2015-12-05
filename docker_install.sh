@@ -4,12 +4,12 @@ RES='\E[0m'
 
 sudo docker -v
 if [ $? -eq 0]; then
-    echo "${RED}Do you want to uninstall docker. [yes/no] ${RES}"
+    echo -e "${RED}Do you want to uninstall docker. [yes/no] ${RES}"
     read yn
     if [ "$yn" == "yes" -o "$yn" == "y" ]; then
-	    echo "begin uninstall docker..."
+	    echo -e "begin uninstall docker..."
 	    sudo apt-get autoremove --purge docker-engine
-        echo "${RED}Are you want to delete all images, containers and volumes. [yee/no] ${RES}"
+        echo -e "${RED}Are you want to delete all images, containers and volumes. [yee/no] ${RES}"
         read yn
 	    if [ "$yn" == "yes" -o "$yn" == "y" ]; then
 		    sudo rm -rf /var/lib/docker
@@ -29,7 +29,8 @@ echo "Aalivable version of Docker:"
 sudo apt-get purge lxc-docker*
 sudo apt-cache policy docker-engine
 
-read -p "${RED}Choose the version you want to install: ${RES}" docker_version
+echo -e "${RED}Choose the version you want to install: ${RES}" 
+read docker_version
 
 sudo apt-get install -y docker-engine=$docker_version
 
