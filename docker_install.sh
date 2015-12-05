@@ -1,5 +1,6 @@
 #!/bin/bash
-
+RED='\E[1;31m'
+RES='\E[0m'
 read -p "Do you need uninstall docker, [yes/no] " yn
 if [ "$yn" == "yes" -o "$yn" == "y" ]; then
 	echo "begin uninstall docker..."
