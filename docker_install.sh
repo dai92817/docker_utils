@@ -4,7 +4,7 @@ read -p "Do you need uninstall docker, [yes/no]" yn
 if [ "$yn" == "yes" -o "$yn" == "y" ]; then
 	echo "begin uninstall docker..."
 	sudo apt-get autoremove --purge docker-engine
-	echo "Are you want to delete all images, containers, and volumes. [yes/no]" yn 
+	read -p "Are you want to delete all images, containers, and volumes. [yes/no]" yn 
 	if [ "$yn" == "yes" -o "$yn" == "y" ]; then
 		sudo rm -rf /var/lib/docker
     fi
