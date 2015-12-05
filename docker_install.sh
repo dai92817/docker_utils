@@ -3,7 +3,7 @@ RED='\E[1;31m'
 RES='\E[0m'
 
 sudo docker -v
-if [ $? -eq 0]; then
+if [[ $? -eq 0 ]]; then
     echo -e "${RED}Do you want to uninstall docker. [yes/no] ${RES}"
     read yn
     if [ "$yn" == "yes" -o "$yn" == "y" ]; then
